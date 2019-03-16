@@ -1,0 +1,127 @@
+
+		body {
+  		background-color: #eee;
+			background: url(../images/bg-desert1.jpg);
+			background-size: cover;
+		}
+
+    @font-face {
+      font-family: adventure;
+      src: url(../fonts/adventure.otf);
+    }
+
+
+    h1 {
+      font-size: 54px;
+      color: #b4592a;
+    }
+
+		.container {
+			background: rgba(255, 255, 255, 0.8);
+			margin: 20px auto;
+			padding: 20px 0px 20px 20px;
+			overflow: auto;
+			width: 1024px;
+
+      font-family: adventure;
+		}
+		
+		.row { margin-left: 0px; }
+
+    #indy-idol {
+      background: url(../images/indy-idol.jpg) no-repeat;
+      background-size: 320px 136px;
+      width: 320px; height: 136px;
+    }
+
+    #indy-idol p {
+      position: relative; top: 140px;
+      font-size: 15px;
+      color: #b4592a;
+      margin-left: -8px;
+    }
+
+    #crystals { margin: 50px auto 30px; }
+
+    #instructions {
+      margin: -4px 0px 0px -25px;
+      padding: 0px;
+    }
+
+    #instructions ul li {
+      font-size: 16px;
+      color: #a3773c;
+      list-style: none;
+    }
+
+    #instructions ul li span { text-decoration: underline; }
+
+    .crystal.red {
+      background: url(../images/crystal-red.png) no-repeat;
+      background-size: 128px 120px;
+      width: 128px; height: 120px;
+    }
+
+    .crystal.blue {
+      background: url(../images/crystal-blue.png) no-repeat;
+      background-size: 144px 120px;
+      width: 144px; height: 120px;
+    }
+
+    .crystal.yellow {
+      background: url(../images/crystal-yellow.png) no-repeat;
+      background-size: 146px 120px;
+      width: 146px; height: 120px;
+    }
+
+    .crystal.green {
+      background: url(../images/crystal-green.png) no-repeat;
+      background-size: 112px 120px;
+      width: 112px; height: 120px;
+    }
+
+    #targetScoreDisplay {
+      background-color: rgba(255, 255, 255, 0.5);
+      height: 230px;
+      text-align: center;
+    }
+    
+    #targetScoreDisplay h2 {
+      background-color: #b4592a;   
+      font-size: 36px;
+      color: #f7ebda;
+      margin-bottom: 0px;
+      padding-left: 0px;
+    }
+
+    #targetScore {
+      font-size: 144px;
+      color: #b4592a;
+      padding-right: 45px;
+      position: relative; top: -17px;
+    }
+
+		.row { margin-top: 10px; }
+
+		#page-header p {
+  		color: #2f4ca3;
+  		text-align: center;
+    }
+
+		p { margin-bottom: 0px; }
+
+    #counter-labels, .counter {
+      color: #b4592a;
+    }
+
+		button {
+			background-color: #b4592a;
+			color: white;
+			font-size: 18px;
+			letter-spacing: 3px;
+			padding: 5px 15px;
+			margin-top: 10px;
+		}
+		
+		button:focus { outline: none; }
+		
