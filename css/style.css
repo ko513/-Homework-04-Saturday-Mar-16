@@ -1,6 +1,5 @@
 
 		body {
-  		background-color: #eee;
 			background: url(../images/bg-desert1.jpg);
 			background-size: cover;
 		}
@@ -49,7 +48,7 @@
     }
 
     #instructions ul li {
-      font-size: 16px;
+      font-size: 17px;
       color: #a3773c;
       list-style: none;
     }
@@ -82,7 +81,7 @@
 
     #targetScoreDisplay {
       background-color: rgba(255, 255, 255, 0.5);
-      height: 230px;
+      height: 190px;
       text-align: center;
     }
     
@@ -95,8 +94,9 @@
     }
 
     #targetScore {
-      font-size: 144px;
+      font-size: 120px;
       color: #b4592a;
+      letter-spacing: 1px;
       padding-right: 45px;
       position: relative; top: -17px;
     }
@@ -111,13 +111,15 @@
 		p { margin-bottom: 0px; }
 
     #counter-labels, .counter {
+      font-size: 18px;
       color: #b4592a;
+      letter-spacing: 1px;
     }
 
 		button {
 			background-color: #b4592a;
 			color: white;
-			font-size: 18px;
+			font-size: 24px;
 			letter-spacing: 3px;
 			padding: 5px 15px;
 			margin-top: 10px;

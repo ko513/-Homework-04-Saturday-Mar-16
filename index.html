@@ -26,12 +26,12 @@
   			<div class="col-md-4" id="indy-idol"><p>This adventure is easier and much less dangerous!</p></div>
   			<div class="col-md-8" id="instructions">
 					<ul>
-  					<li>At the start of each game a (random) target score is displayed</li>
-  					<li>The goal is to score <span>exactly</span> that many points by clicking on the crystals</li>
-  					<li>Clicking a crystal adds points to your total</li>
-  					<li>Each of the four crystals has a different points value, which you must deduce</li>
+  					<li>At the start of each game your score is 0, and a (random) target score is displayed</li>
+  					<li>Clicking on each crystal adds points to your total score</li>
+  					<li>Each of the four crystals has a different point value, which you must deduce</li>
+  					<li>The goal is to reach the target score <span>exactly</span> by clicking on the crystals</li>
   					<li>You win the game if you "click in" the exact number of points shown in the Total box</li>
-  					<li>You lose the game if you click in too many points. Overall won/loss totals are displayed</li>
+  					<li>You lose the game if you click in too many points. Good luck!</li>
 					</ul>
   			</div>
   		</div>
@@ -55,9 +55,9 @@
     			</div>
     		</div>
   			<div class="col-md-2" id="counter-labels">
-    			<div>Your Score:</div>
-    			<div>Total Wins:</div>
-    			<div>Total Losses:</div>
+    			<div>Your Score</div>
+    			<div>Total Wins</div>
+    			<div>Total Losses</div>
   			</div>
   			<div class="col-md-2">
     			<div id="userScoreDisplay" class="counter"></div>
@@ -78,100 +78,82 @@
   
   	</div>	<!--	container	-->
 
-      <!-- jQuery CDN -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  
-
-  
-  		<script>  
-  
-  			var
-  				userScore, targetScore, crystalValue,
-  				totalWins = 0, totalLosses = 0;
-    
-  
-  			newGame();
-  
-
-        $(".crystal").on("click",function() {
-
-          var crystalValue = parseInt($(this).attr("value"));
-          console.log('onClick, crystalValue = ' + crystalValue);
-          
-          userScore += crystalValue;
-          $("#userScoreDisplay").text(userScore);
-          console.log('userScore = ' + userScore);
-          
-          if (userScore == targetScore)
-            { gameWin() ;}
-          else if (userScore > targetScore)
-            { gameOver(); }
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 
+
+		<script>  
+
+			var
+				userScore, targetScore, crystalValue,
+				totalWins = 0, totalLosses = 0;
+  
+
+			newGame();
+
+
+      $(".crystal").on("click",function() {
+
+        var crystalValue = parseInt($(this).attr("value"));
+        console.log('onClick, crystalValue = ' + crystalValue);
+        
+        userScore += crystalValue;
+        $("#userScoreDisplay").text(userScore);
+        console.log('userScore = ' + userScore);
+        
+        if (userScore == targetScore)
+          { gameWin() ;}
+        else if (userScore > targetScore)
+          { gameOver(); }
+
+      });
+
+
+
+			function gameWin() {
+        console.log('You win!');
+        ++totalWins;
+        $("#totalWins").text(totalWins);
+        newGame();
+			}
+
+			function gameOver() {
+        console.log('You lose');
+        ++totalLosses;
+        $("#totalLosses").text(totalLosses);
+        newGame();
+      }
+
+			function newGame() {
+        targetScore = Math.floor(Math.random() * (120 - 9)) + 9;
+        $("#targetScore").text(targetScore);
+        console.log('targetScore = ' + targetScore);
+
+
+        var randomNum;
+        $( ".crystal" ).each(function() {
+          randomNum = Math.floor(Math.random() * 12) + 1;
+          $(this).attr("value", randomNum);
+          console.log('this.class = ' + $(this).attr('class'));
+          console.log('this.value = ' + $(this).attr('value'));
         });
 
 
-  
-  			function updateProgress() {
-  				//document.getElementById("displayWord").innerHTML = bandNameDisplay.join("");
-  				//document.getElementById("correctGuesses").innerHTML = correctGuessesMade.toString();
-  				//document.getElementById("incorrectGuesses").innerHTML = incorrectGuessesMade.toString();
-  				//document.getElementById("guessesRemaining").innerHTML = guessesRemaining.toString();
-  			}
-  
-  
-  			function gameWin() {
-          console.log('You win!');
-          ++totalWins;
-          $("#totalWins").text(totalWins);
-          newGame();
-  			}
-  
-  			function gameOver() {
-          console.log('You lose');
-          ++totalLosses;
-          $("#totalLosses").text(totalLosses);
-          newGame();
-        }
-  
-  			function newGame() {
-/*
-  				//document.getElementById("displayWord").innerHTML = "&nbsp;";
-  				//document.getElementById("displayWord").innerHTML = bandNameDisplay.join("");
-  
-  				//document.getElementById("correctGuesses").innerHTML = "&nbsp";
-  				//document.getElementById("incorrectGuesses").innerHTML = "&nbsp";
-  				//document.getElementById("guessesRemaining").innerHTML = "&nbsp";
-*/
+        userScore = 0;
+        $("#userScoreDisplay").text(userScore);
+        $("#totalWins").text(totalWins);
+        $("#totalLosses").text(totalLosses);
+			}
 
-          targetScore = Math.floor(Math.random() * (120 - 9)) + 9;
-          $("#targetScore").text(targetScore);
-          console.log('targetScore = ' + targetScore);
+      function resetGame() {
+        newGame();
+				totalWins = 0; totalLosses = 0;
+        $("#totalWins").text(totalWins);
+        $("#totalLosses").text(totalLosses);
+      }
 
-
-          var randomNum;
-          $( ".crystal" ).each(function() {
-            randomNum = Math.floor(Math.random() * 12) + 1;
-            $(this).attr("value", randomNum);
-            console.log('this.class = ' + $(this).attr('class'));
-            console.log('this.value = ' + $(this).attr('value'));
-          });
-
-
-          userScore = 0;
-          $("#userScoreDisplay").text(userScore);
-          $("#totalWins").text(totalWins);
-          $("#totalLosses").text(totalLosses);
-  			}
- 
-        function resetGame() {
-          newGame();
-  				totalWins = 0; totalLosses = 0;
-          $("#totalWins").text(totalWins);
-          $("#totalLosses").text(totalLosses);
-        }
-  
-  		</script>
+		</script>
   
   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
